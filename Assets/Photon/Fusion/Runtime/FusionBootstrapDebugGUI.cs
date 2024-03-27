@@ -191,11 +191,7 @@ namespace Fusion {
             }
             GUILayout.EndHorizontal();
 
-            if (GUILayout.Button(EnableHotkeys ? "Start Single Player (I)" : "Start Single Player", GUILayout.Height(height))) {
-              nds.StartSinglePlayer();
-            }
-
-            if (GUILayout.Button(EnableHotkeys ? "Start Shared Client (P)" : "Start Shared Client", GUILayout.Height(height))) {
+            if (GUILayout.Button(EnableHotkeys ? "Start Shared Client (P)" : "PC", GUILayout.Height(height))) {
               if (_isMultiplePeerMode) {
                 StartMultipleSharedClients(nds);
               } else {
@@ -203,40 +199,21 @@ namespace Fusion {
               }
             }
 
-            if (GUILayout.Button(EnableHotkeys ? "Start Server (S)" : "Start Server", GUILayout.Height(height))) {
-              if (_isMultiplePeerMode) {
-                StartServerWithClients(nds);
-
-              } else {
-                nds.StartServer();
-              }
+            if (GUILayout.Button(EnableHotkeys ? "Start Shared Client (P)" : "VR", GUILayout.Height(height)))
+            {
+                if (_isMultiplePeerMode)
+                {
+                    StartMultipleSharedClients(nds);
+                }
+                else
+                {
+                    nds.StartSharedClient();
+                }
             }
 
-            if (GUILayout.Button(EnableHotkeys ? "Start Host (H)" : "Start Host", GUILayout.Height(height))) {
-              if (_isMultiplePeerMode) {
-                StartHostWithClients(nds);
-              } else {
-                nds.StartHost();
-              }
-            }
 
-            if (GUILayout.Button(EnableHotkeys ? "Start Client (C)" : "Start Client", GUILayout.Height(height))) {
-              if (_isMultiplePeerMode) {
-                StartMultipleClients(nds);
-              } else {
-                nds.StartClient();
-              }
-            }
 
-            if (GUILayout.Button(EnableHotkeys ? "Start Auto Host Or Client (A)" : "Start Auto Host Or Client", GUILayout.Height(height))) {
-              if (_isMultiplePeerMode) {
-                StartMultipleAutoClients(nds);
-              } else {
-                nds.StartAutoClient();
-              }
-            }
-
-            if (_isMultiplePeerMode) {
+                        if (_isMultiplePeerMode) {
 
               GUILayout.BeginHorizontal(/*GUI.skin.button*/);
               {
