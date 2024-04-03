@@ -199,7 +199,7 @@ namespace Fusion {
               }
             }
 
-            if (GUILayout.Button(EnableHotkeys ? "Start Shared Client (P)" : "VR", GUILayout.Height(height)))
+            if (GUILayout.Button(EnableHotkeys ? "Start Shared Client (P)" : "b", GUILayout.Height(height)))
             {
                 if (_isMultiplePeerMode)
                 {
