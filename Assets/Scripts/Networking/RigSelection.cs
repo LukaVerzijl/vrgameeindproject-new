@@ -15,6 +15,7 @@ namespace Fusion.XR.Shared.Desktop
         public UnityEvent OnSelectRig { get; }
         public bool IsRigSelected { get; }
         public bool IsVRRigSelected { get; }
+
     }
 
 
@@ -33,11 +34,19 @@ namespace Fusion.XR.Shared.Desktop
         
         public GameObject vrRig;
         public GameObject desktopRig;
+
         Camera rigSelectionCamera;
 
         public bool forceVROnAndroid = true;
 
         public bool rigSelected = false;
+
+
+        public bool isVRSelected = false;
+
+        public bool isPCSelected = false;
+
+        public PlayerSpawner PlayerSpawner;
 
         public enum Mode
         {
@@ -59,8 +68,8 @@ namespace Fusion.XR.Shared.Desktop
             {
                 Debug.LogError("No connexion handler provided to RigSelection: risk of connection before choosing the appropriate hardware rig !");
             }
-            vrRig.gameObject.SetActive(false);
-            desktopRig.gameObject.SetActive(false);
+
+            PlayerSpawner = connexionHandler.GetComponent<PlayerSpawner>();
 
 #if !UNITY_EDITOR && UNITY_ANDROID
             if (forceVROnAndroid)
@@ -125,19 +134,25 @@ namespace Fusion.XR.Shared.Desktop
 
         void EnableVRRig()
         {
-            gameObject.SetActive(false);
-            vrRig.gameObject.SetActive(true);
+            this.enabled = false;
+
+            PlayerSpawner.isVRSelected = true;
+            Debug.Log(PlayerSpawner.isVRSelected);
             SetVRPreference();
             OnRigSelected();
+
+       
         }
 
-        void EnableDesktopRig()
-        {
-            gameObject.SetActive(false);
-            desktopRig.gameObject.SetActive(true);
+            void EnableDesktopRig()
+            {
+                this.enabled= false;
+                PlayerSpawner.isPCSelected = true;
+            Debug.Log(PlayerSpawner.isPCSelected);
+
             SetDesktopPreference();
-            OnRigSelected();
-        }
+                OnRigSelected();
+            }
 
         void OnRigSelected()
         {
@@ -174,4 +189,5 @@ namespace Fusion.XR.Shared.Desktop
             PlayerPrefs.Save();
         }
     }
+
 }

@@ -6,6 +6,7 @@ public class PlayerMovement : NetworkBehaviour
 {
     private CharacterController _controller;
     private ThirdPersonCamera ThirdPersonCamera;
+    private Camera mainCam;
     //player movement variables
     [Header("Movement")]
     public float moveSpeed = 2f;
@@ -174,6 +175,8 @@ public class PlayerMovement : NetworkBehaviour
             //define the third person script
             playerCam = GameObject.Find("PlayerCam");
             ThirdPersonCamera = playerCam.GetComponent<ThirdPersonCamera>();
+            mainCam = ThirdPersonCamera.GetComponent<Camera>();
+            mainCam.enabled = true;
 
 
             //Set targets Third person camera script
