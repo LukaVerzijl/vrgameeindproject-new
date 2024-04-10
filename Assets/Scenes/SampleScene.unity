@@ -1327,7 +1327,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 428c2f130b8988c41b9793542f606561, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  VRRig: {fileID: 3252389559136203896, guid: 4b5dcc4545d409246b138e384029fc7a, type: 3}
+  VRRig: {fileID: 2049876682799234617, guid: 6865fe5c5eda82a4e87ef782d4134e27, type: 3}
   PCRig: {fileID: 5721794177352150277, guid: c3668c7718ff3e1479ef90957121e852, type: 3}
   isPCSelected: 0
   isVRSelected: 0
@@ -1607,52 +1607,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2092056421
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2092056423}
-  - component: {fileID: 2092056422}
-  m_Layer: 0
-  m_Name: XR Interaction Manager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &2092056422
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2092056421}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 83e4e6cca11330d4088d729ab4fc9d9f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_StartingHoverFilters: []
-  m_StartingSelectFilters: []
---- !u!4 &2092056423
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2092056421}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.4323251, y: -2.9233766, z: 1.443675}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -1664,4 +1618,3 @@ SceneRoots:
   - {fileID: 51782747}
   - {fileID: 116586794}
   - {fileID: 631542445}
-  - {fileID: 2092056423}
