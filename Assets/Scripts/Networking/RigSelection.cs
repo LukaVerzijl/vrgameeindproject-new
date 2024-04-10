@@ -45,17 +45,10 @@ namespace Fusion.XR.Shared.Desktop
         public bool isVRSelected = false;
 
         public bool isPCSelected = false;
-
+        public GameObject cam3;
         public PlayerSpawner PlayerSpawner;
 
-        public enum Mode
-        {
-            SelectedByUI,
-            SelectedByUserPref,
-            ForceVR,
-            ForceDesktop
-        }
-        public Mode mode = Mode.SelectedByUI;
+
 
         private void Awake()
         {
@@ -71,45 +64,9 @@ namespace Fusion.XR.Shared.Desktop
 
             PlayerSpawner = connexionHandler.GetComponent<PlayerSpawner>();
 
-#if !UNITY_EDITOR && UNITY_ANDROID
-            if (forceVROnAndroid)
-            {
-                EnableVRRig();
-                return;
-            }
-#endif
-            if (mode == Mode.ForceVR)
-            {
-                EnableVRRig();
-                return;
-            }
-
-            if (mode == Mode.ForceDesktop)
-            {
-                EnableDesktopRig();
-                return;
-            }
-
-            // In release build, we replace SelectedByUI by SelectedByUserPref unless overriden
-            DisableDebugSelectedByUI();
-
-            if (mode == Mode.SelectedByUserPref)
-            {
-                var sessionPrefMode = PlayerPrefs.GetString(SETTING_RIGMODE);
-                if (sessionPrefMode != "")
-                {
-                    if (sessionPrefMode == RIGMODE_VR) EnableVRRig();
-                    if (sessionPrefMode == RIGMODE_DESKTOP) EnableDesktopRig();
-                }
-            }
         }
 
-        protected virtual void DisableDebugSelectedByUI()
-        {
-#if !UNITY_EDITOR
-            if (mode == Mode.SelectedByUI) mode = Mode.SelectedByUserPref;
-#endif
-        }
+
 
         protected virtual void OnGUI()
         {
@@ -135,10 +92,9 @@ namespace Fusion.XR.Shared.Desktop
         void EnableVRRig()
         {
             this.enabled = false;
-
             PlayerSpawner.isVRSelected = true;
             Debug.Log(PlayerSpawner.isVRSelected);
-            SetVRPreference();
+
             OnRigSelected();
 
        
@@ -148,9 +104,8 @@ namespace Fusion.XR.Shared.Desktop
             {
                 this.enabled= false;
                 PlayerSpawner.isPCSelected = true;
-            Debug.Log(PlayerSpawner.isPCSelected);
+            Debug.Log(PlayerSpawner.isPCSelected);  
 
-            SetDesktopPreference();
                 OnRigSelected();
             }
 
@@ -175,19 +130,6 @@ namespace Fusion.XR.Shared.Desktop
             rigSelected = true;
         }
 
-        [ContextMenu("Set preference to desktop")]
-        public void SetDesktopPreference()
-        {
-            PlayerPrefs.SetString(SETTING_RIGMODE, RIGMODE_DESKTOP);
-            PlayerPrefs.Save();
-        }
-
-        [ContextMenu("Set preference to VR")]
-        public void SetVRPreference()
-        {
-            PlayerPrefs.SetString(SETTING_RIGMODE, RIGMODE_VR);
-            PlayerPrefs.Save();
-        }
     }
 
 }
