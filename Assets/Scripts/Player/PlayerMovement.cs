@@ -90,13 +90,10 @@ public class PlayerMovement : NetworkBehaviour
     {
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
-        Debug.Log(readyToJump);
-        Debug.Log(grounded);
         //when to jump
         if (Input.GetKey(jumpKey) && readyToJump && grounded)
         {
             readyToJump = false;
-            Debug.Log("we can jump");
 
 
             Jump();
@@ -113,11 +110,9 @@ public class PlayerMovement : NetworkBehaviour
         //on ground
         if (grounded)
         {
-            Debug.Log("move on ground");
             rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
         } else if (!grounded)
         {
-            Debug.Log("move in air");
             rb.AddForce(moveDirection.normalized * moveSpeed * 10f * airMultiplier, ForceMode.Force);
         }
             
@@ -141,7 +136,6 @@ public class PlayerMovement : NetworkBehaviour
         rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
 
         rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
-        Debug.Log("JUMP!");
     }
 
     private void ResetJump()
@@ -162,10 +156,7 @@ public class PlayerMovement : NetworkBehaviour
             RB = player.transform.GetComponent<Rigidbody>();
             combatLookAt = orientationObj.transform.GetChild(0).gameObject;
 
-            Debug.Log(playerObj.name);
-            Debug.Log(orientationObj.name);
-            Debug.Log(player.name);
-            Debug.Log(RB);
+      
 
 
 
@@ -191,7 +182,6 @@ public class PlayerMovement : NetworkBehaviour
             ThirdPersonCamera.enabled = true;
             //ThirdPersonCamera.playerObj = transform.parent.GetChild(0);
 
-            Debug.Log(playerCam.name);
 
 
 
