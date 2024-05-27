@@ -11,14 +11,16 @@ public class ThirdPersonShooterController : NetworkBehaviour
     [SerializeField] private NetworkObject pfBulletProjectile;
     [SerializeField] private GameObject pfBulletProjectile2;
     [SerializeField] private Transform spawnBulletPosition;
+
     public Camera playerCam;
+    private Inventory inventoryScript;
 
     // Start is called before the first frame update
     void Awake()
     {
-        //debugTransform = GameObject.Find("debugTransform").transform;
         playerCam = GameObject.Find("PlayerCam").GetComponent<Camera>();
         spawnBulletPosition = GameObject.Find("CombatLookAt").transform;
+        inventoryScript = GetComponent<Inventory>();
     }
 
     // Update is called once per frame
@@ -33,12 +35,19 @@ public class ThirdPersonShooterController : NetworkBehaviour
             mouseWorldPosition = raycastHit.point;
         }
 
-        if(Input.GetKeyDown(KeyCode.Mouse0))
+        if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            Vector3 aimDir = (mouseWorldPosition - spawnBulletPosition.position).normalized;
-            //Instantiate(pfBulletProjectile, spawnBulletPosition.position, Quaternion.LookRotation(aimDir, Vector3.up));
-            //Runner.Spawn(pfBulletProjectile, Vector3.zero, Quaternion.identity, Runner.LocalPlayer);
-            Runner.Spawn(pfBulletProjectile, spawnBulletPosition.position, Quaternion.LookRotation(aimDir, Vector3.up));
+            if (inventoryScript.GetItemCount("Rocket") > 0)
+            {
+                Vector3 aimDir = (mouseWorldPosition - spawnBulletPosition.position).normalized;
+                Runner.Spawn(pfBulletProjectile, spawnBulletPosition.position, Quaternion.LookRotation(aimDir, Vector3.up));
+
+                inventoryScript.RemoveItem(new Item("Rocket", 1));
+            }
+            else
+            {
+                Debug.LogError("You don't have enough rockets");
+            }
         }
     }
 }

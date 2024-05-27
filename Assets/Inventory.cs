@@ -7,10 +7,9 @@ public class Inventory : MonoBehaviour
     public static Inventory Instance;
     public List<Item> items = new List<Item>();
 
-
     private void Awake()
     {
-        if(Instance != null)
+        if (Instance != null)
         {
             Destroy(gameObject);
         }
@@ -19,6 +18,7 @@ public class Inventory : MonoBehaviour
             Instance = this;
         }
     }
+
     public void AddItem(Item itemToAdd)
     {
         bool itemExists = false;
@@ -35,23 +35,35 @@ public class Inventory : MonoBehaviour
         {
             items.Add(itemToAdd);
         }
-        Debug.Log(itemToAdd.count + " " + itemToAdd.name + "added to inventory");
+        Debug.Log(itemToAdd.count + " " + itemToAdd.name + " added to inventory");
     }
 
     public void RemoveItem(Item itemToRemove)
     {
-        foreach (Item item in items)
+        for (int i = 0; i < items.Count; i++)
         {
-            if(item.name == itemToRemove.name)
-            { 
-                item.count -= itemToRemove.count;
-                if (item.count <= 0)
+            if (items[i].name == itemToRemove.name)
+            {
+                items[i].count -= itemToRemove.count;
+                if (items[i].count <= 0)
                 {
-                    items.Remove(itemToRemove);
+                    items.RemoveAt(i);
                 }
                 break;
             }
         }
-        Debug.Log(itemToRemove.count + " " + itemToRemove.name + "remove from inventory");
+        Debug.Log(itemToRemove.count + " " + itemToRemove.name + " removed from inventory");
+    }
+
+    public int GetItemCount(string itemName)
+    {
+        foreach (Item item in items)
+        {
+            if (item.name == itemName)
+            {
+                return item.count;
+            }
+        }
+        return 0;
     }
 }

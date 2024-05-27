@@ -101,7 +101,6 @@ public class RocketHandler : NetworkBehaviour
 
                 if (networkObject != null)
                 {
-                    Debug.LogError("Hij heeft de bullet gedespawned");
                     Runner.Despawn(networkObject);
                 }
                 else

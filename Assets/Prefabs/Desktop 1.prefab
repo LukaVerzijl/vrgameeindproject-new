@@ -704,6 +704,9 @@ MonoBehaviour:
   pfBulletProjectile: {fileID: -4312708700298095509, guid: f5dbc3a7fbe8fb4438b205e3331a396f, type: 3}
   pfBulletProjectile2: {fileID: 5086791561345201502, guid: f5dbc3a7fbe8fb4438b205e3331a396f, type: 3}
   spawnBulletPosition: {fileID: 209781905395604231, guid: f5dbc3a7fbe8fb4438b205e3331a396f, type: 3}
+  item:
+    name: Rocket
+    count: 1
   playerCam: {fileID: 0}
 --- !u!1 &3927800188137360007
 GameObject:
