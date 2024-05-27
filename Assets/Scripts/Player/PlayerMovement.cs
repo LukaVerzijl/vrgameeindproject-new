@@ -7,6 +7,8 @@ public class PlayerMovement : NetworkBehaviour
     private CharacterController _controller;
     private ThirdPersonCamera ThirdPersonCamera;
     private Camera mainCam;
+
+    private ThirdPersonShooterController ThirdPersonShooterController;
     //player movement variables
     [Header("Movement")]
     public float moveSpeed = 2f;
@@ -73,8 +75,6 @@ public class PlayerMovement : NetworkBehaviour
         MyInput();
         SpeedControl();
         MovePlayer();
-        Debug.Log("grounded: " + grounded);
-        Debug.Log("ready to jump " + readyToJump);
 
 
         //handle drag
@@ -95,7 +95,7 @@ public class PlayerMovement : NetworkBehaviour
         //when to jump
         if (Input.GetKeyDown("space") && readyToJump && grounded)
         {
-            Debug.Log("Jump!");
+            
             readyToJump = false;
 
 
@@ -191,6 +191,9 @@ public class PlayerMovement : NetworkBehaviour
 
             virtualCamera.Follow = transform;
             virtualCamera.LookAt = combatLookAt.transform;
+            ThirdPersonShooterController = gameObject.GetComponent<ThirdPersonShooterController>();
+            ThirdPersonShooterController.enabled = true;
+
 
 
         }

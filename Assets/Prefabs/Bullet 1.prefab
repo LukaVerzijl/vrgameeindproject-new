@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 209781905395604231}
   - component: {fileID: 5596473611515151201}
   - component: {fileID: 6533439857575823688}
-  - component: {fileID: 3024727034740112168}
   - component: {fileID: -4312708700298095509}
   - component: {fileID: 1774905384724104615}
   - component: {fileID: 7418806893908663689}
@@ -31,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 5086791561345201502}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -15.301861, y: 4.4824066, z: -19.365793}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -86,18 +85,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &3024727034740112168
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5086791561345201502}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c0aa2cff148885a4fac92a00dd4b0196, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &-4312708700298095509
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -146,7 +133,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosionParticleSystemPrefab: {fileID: 0}
-  checkForImpactPoint: {fileID: 0}
+  checkForImpactPoint: {fileID: 664539291179611718}
   collisionLayers:
     serializedVersion: 2
     m_Bits: 4294967295

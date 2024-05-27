@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class ThirdPersonShooterController : NetworkBehaviour
+public class thirdtersonShooterControllerNew : NetworkBehaviour
 {
     [SerializeField] private LayerMask aimColliderLayerMask = new LayerMask();
     [SerializeField] private Transform debugTransform;
@@ -16,8 +16,10 @@ public class ThirdPersonShooterController : NetworkBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        //debugTransform = GameObject.Find("debugTransform").transform;
-        playerCam = GameObject.Find("PlayerCam").GetComponent<Camera>();
+        debugTransform = GameObject.Find("debugTransform").transform;
+        playerCam = GameObject.Find("CameraHolder").GetComponentAtIndex(0).GetComponent<Camera>();
+        print("trying for playercam");
+        Debug.Log("Je dikke omaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
         spawnBulletPosition = GameObject.Find("CombatLookAt").transform;
     }
 
@@ -33,12 +35,12 @@ public class ThirdPersonShooterController : NetworkBehaviour
             mouseWorldPosition = raycastHit.point;
         }
 
-        if(Input.GetKeyDown(KeyCode.Mouse0))
+        if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             Vector3 aimDir = (mouseWorldPosition - spawnBulletPosition.position).normalized;
-            //Instantiate(pfBulletProjectile, spawnBulletPosition.position, Quaternion.LookRotation(aimDir, Vector3.up));
-            //Runner.Spawn(pfBulletProjectile, Vector3.zero, Quaternion.identity, Runner.LocalPlayer);
-            Runner.Spawn(pfBulletProjectile, spawnBulletPosition.position, Quaternion.LookRotation(aimDir, Vector3.up));
+            Instantiate(pfBulletProjectile2, spawnBulletPosition.position, Quaternion.LookRotation(aimDir, Vector3.up));
+            Runner.Spawn(pfBulletProjectile, Vector3.zero, Quaternion.identity, Runner.LocalPlayer);
+            Debug.Log(Runner.Spawn(pfBulletProjectile, spawnBulletPosition.position, Quaternion.LookRotation(aimDir, Vector3.up)));
         }
     }
 }

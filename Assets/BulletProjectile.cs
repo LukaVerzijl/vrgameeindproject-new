@@ -19,7 +19,7 @@ public class BulletProjectile : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        print("hallo");
+        print("Doei");
         Destroy(gameObject);
     }
 }
