@@ -41,16 +41,24 @@ public class RocketHandler : NetworkBehaviour
         {
             Debug.LogError("NetworkObject component is missing on the rocket.");
         }
+    }
 
-        maxLiveDurationTickTimer = TickTimer.CreateFromSeconds(Runner, 10);
+    private void Start()
+    {
+        if (Object.HasStateAuthority)
+        {
+            maxLiveDurationTickTimer = TickTimer.CreateFromSeconds(Runner, 10);
+            networkObject = GetComponent<NetworkObject>();
+            print(maxLiveDurationTickTimer);
+        }
     }
 
     public override void FixedUpdateNetwork()
     {
-        transform.position += transform.forward * Runner.DeltaTime * rocketSpeed;
-
-        if (Object.HasInputAuthority)
+        if (Object.HasStateAuthority)
         {
+            transform.position += transform.forward * Runner.DeltaTime * rocketSpeed;
+
             if (maxLiveDurationTickTimer.Expired(Runner))
             {
                 if (networkObject != null)
@@ -90,11 +98,10 @@ public class RocketHandler : NetworkBehaviour
                 {
                     // Implement damage logic here
                 }
-                networkObject = GetComponent<NetworkObject>();
+
                 if (networkObject != null)
                 {
                     Debug.LogError("Hij heeft de bullet gedespawned");
-                    Destroy(gameObject);
                     Runner.Despawn(networkObject);
                 }
                 else

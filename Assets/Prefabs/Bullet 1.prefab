@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 5086791561345201502}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -15.301861, y: 4.4824066, z: -19.365793}
+  m_LocalPosition: {x: 9.685547, y: 1.0591822e-16, z: -18.104084}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -136,7 +136,7 @@ MonoBehaviour:
   checkForImpactPoint: {fileID: 664539291179611718}
   collisionLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 1536
 --- !u!1 &8333517608556318804
 GameObject:
   m_ObjectHideFlags: 0
