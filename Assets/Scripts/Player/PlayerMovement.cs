@@ -16,7 +16,7 @@ public class PlayerMovement : NetworkBehaviour
     public float jumpForce;
     public float jumpCooldown;
     public float airMultiplier;
-    bool readyToJump;
+    bool readyToJump = true;
 
     [Header("Keybinds")]
     public KeyCode jumpKey = KeyCode.Space;
@@ -73,6 +73,8 @@ public class PlayerMovement : NetworkBehaviour
         MyInput();
         SpeedControl();
         MovePlayer();
+        Debug.Log("grounded: " + grounded);
+        Debug.Log("ready to jump " + readyToJump);
 
 
         //handle drag
@@ -91,14 +93,16 @@ public class PlayerMovement : NetworkBehaviour
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
         //when to jump
-        if (Input.GetKey(jumpKey) && readyToJump && grounded)
+        if (Input.GetKeyDown("space") && readyToJump && grounded)
         {
+            Debug.Log("Jump!");
             readyToJump = false;
 
 
             Jump();
 
-            Invoke(nameof(ResetJump), jumpCooldown);
+            //Invoke(nameof(ResetJump), jumpCooldown);
+            readyToJump = true;
         }
     }
 

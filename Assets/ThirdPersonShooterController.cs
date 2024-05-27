@@ -11,7 +11,7 @@ public class ThirdPersonShooterController : NetworkBehaviour
     [SerializeField] private NetworkObject pfBulletProjectile;
     [SerializeField] private GameObject pfBulletProjectile2;
     [SerializeField] private Transform spawnBulletPosition;
-    Camera playerCam;
+    public Camera playerCam;
 
     // Start is called before the first frame update
     void Start()
@@ -27,6 +27,8 @@ public class ThirdPersonShooterController : NetworkBehaviour
     {
         Vector3 mouseWorldPosition = Vector3.zero;
         Vector2 screenCenterPoint = new Vector2(Screen.width / 2f, Screen.height / 2f);
+        print(screenCenterPoint);
+        print(playerCam);
         Ray ray = playerCam.ScreenPointToRay(screenCenterPoint);
         if (Physics.Raycast(ray, out RaycastHit raycastHit, 999f, aimColliderLayerMask))
         {

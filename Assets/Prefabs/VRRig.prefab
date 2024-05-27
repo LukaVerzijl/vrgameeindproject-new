@@ -2564,7 +2564,7 @@ GameObject:
   - component: {fileID: 1981636678783084420}
   - component: {fileID: 7879405005548801340}
   m_Layer: 0
-  m_Name: '[BuildingBlock] Camera Rig'
+  m_Name: VRRig
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
