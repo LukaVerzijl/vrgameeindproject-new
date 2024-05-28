@@ -61,7 +61,7 @@ public class PlayerMovement : NetworkBehaviour
     }
 
 
-    public override void FixedUpdateNetwork()
+    public void Update()
     {
         // Only move own player and not every other player. Each player controls its own player object.
         if (HasStateAuthority == false)
