@@ -20,13 +20,13 @@ public class PlayerSpawner : SimulationBehaviour, IPlayerJoined
         {
             if(isVRSelected)
             {
-                Runner.Spawn(VRRig, new Vector3(0, 1, 0), Quaternion.identity);
+                Runner.Spawn(VRRig, new Vector3(0, -3.72f, -14.84f), Quaternion.identity);
 
                 tagToDisable = "PCCam";
             } 
             else if(isPCSelected)
             {
-                Runner.Spawn(PCRig, new Vector3(0, 1, 0), Quaternion.identity);
+                Runner.Spawn(PCRig, new Vector3(5, 1, 0), Quaternion.identity);
                 tagToDisable = "VRCam";
                 print("pc is geselecteerd");
             }
